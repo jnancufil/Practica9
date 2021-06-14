@@ -1,0 +1,36 @@
+//char delimitador = ' ';
+SortedDictionary<string, int> openWith =  new SortedDictionary<string, int>();
+ 
+char[] delimiterChars = { ' ', ',', '.', ':', '(' , ')'  };
+Console.WriteLine("Ingrese nombre de archivo: ");
+ 
+string dato = Console.ReadLine();
+ 
+if (dato != "") {
+    System.IO.StreamReader sr = new System.IO.StreamReader(dato);
+   string linea;
+    //int contador = 0;
+    while (! sr.EndOfStream){
+        linea = sr.ReadToEnd();
+        string[] vectorSt = linea.Split(delimiterChars); // char delimitador = ' ';
+        Array.Sort(vectorSt); //ordenamiento por default
+        for (int i =0; i < vectorSt.Length; i++ ){
+            if (! openWith.ContainsKey(vectorSt[i])){
+                openWith.Add(vectorSt[i], 1);}
+            else {
+                openWith[vectorSt[i]]++; // openWith[vectorSt[i]] +=1 ;
+            }
+        }
+    }
+ 
+ 
+foreach (KeyValuePair<string, int> kpv in openWith )
+    {
+    Console.WriteLine("{0}: {1}",
+       kpv.Key, kpv.Value);
+}
+ 
+}
+else {
+    Console.WriteLine("El archivo de texto no existe");
+}
