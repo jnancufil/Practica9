@@ -8,14 +8,15 @@ List<PalabraPosiciones> nuevaLista = both.ConverterAll (new Converter<string, Pa
 
 public static PalabrasPosiciones strToPalabrasPosiciones(string elem){
   PalabraPosiciones aux = new PalabraPosiciones(elem);
+  aux.buscarYAgregarPosiciones(textUno, 0); 
   
-  
-  return new PalabrasPosiciones(elem); 
+  return aux; 
 }
 
 class PalabraPosiciones{
     public string Palabra {private set; get; }
     public List<List<int>> Posiciones {private set; get; }= new List<List<int>>(); 
+    
     public PalabraPosiciones(){}
     pulic PalabraPosiciones(string elem) => Palabra = elem; 
 
@@ -29,6 +30,13 @@ public void buscarYAgregarPosiciones(string unText, int nroLista){
 		Posiciones[nroLista].Add(at);
 		ini = at+1; 
 	}
+}
+class Textos{
+	public List<string> listaDeTextos {private set; get} = new List<string>(); 
+	
+	public Textos(){}
+	public Textos(int nroTxt, string unTxt) => listaDeTextos[nroTxt].Add(unTxt); 
+	
 }
 }
 StreamReader 
