@@ -1,0 +1,18 @@
+/**
+using System.IO; 
+using System.Collections.Generic; 
+
+
+List<string> both = l1.Intersec(l2); 
+List<PalabraPosiciones> nuevaLista = both.ConverterAll (new Converter<string, PalabraPosiciones>(strToPalabrasPosciciones)); 
+
+public static PalabrasPosiciones strToPalabrasPosiciones(string elem){
+  return new PalabrasPosiciones(elem); 
+}
+
+class PalabraPosiciones{
+    public string Palabra {private set; get; }
+    public List<List<int>> Posicione {private set; get; }= new List<List<int>>(); 
+
+}
+StreamReader 
