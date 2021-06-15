@@ -7,12 +7,28 @@ List<string> both = l1.Intersec(l2);
 List<PalabraPosiciones> nuevaLista = both.ConverterAll (new Converter<string, PalabraPosiciones>(strToPalabrasPosciciones)); 
 
 public static PalabrasPosiciones strToPalabrasPosiciones(string elem){
+  PalabraPosiciones aux = new PalabraPosiciones(elem);
+  
+  
   return new PalabrasPosiciones(elem); 
 }
 
 class PalabraPosiciones{
     public string Palabra {private set; get; }
-    public List<List<int>> Posicione {private set; get; }= new List<List<int>>(); 
+    public List<List<int>> Posiciones {private set; get; }= new List<List<int>>(); 
+    public PalabraPosiciones(){}
+    pulic PalabraPosiciones(string elem) => Palabra = elem; 
 
+public void buscarYAgregarPosiciones(string unText, int nroLista){
+	int end = unText.Length; 
+	int ini = 0; 
+	int at; 
+	while ((ini <= end) && (at > -1)){
+		at = unText.IndexOf (Palabra, ini, end); 
+		if (at == -1) break;
+		Posiciones[nroLista].Add(at);
+		ini = at+1; 
+	}
+}
 }
 StreamReader 
