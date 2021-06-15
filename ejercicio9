@@ -1,0 +1,32 @@
+//metodos de IEnumerables: interseccion, union, etc 
+/**9) Solicitar al usuario que ingrese el nombre por consola de dos archivo de texto. Si existen ambos se
+debe mostrar por consola un listado con cada una de las palabras que se encuentran en ambos
+archivos a la vez. Por ejemplo, si el primer archivo contiene el texto del primer párrafo del punto 8, y
+,el segundo archivo contiene este párrafo, la salida debería ser:
+Nota: Observar además que las palabras están listadas en orden alfabético.
+Tip: Como cabría esperar, los tipos genéricos que representan conjuntos, implementan operaciones
+de conjunto como la unión, la intersección.**/
+
+using System.Collections.Generic; 
+using System.IO; 
+
+
+Console.WriteLine("Ingrese nombre de texto 1: "); 
+string txt1 = Console.ReadLine(); 
+Console.WriteLine("Ingrese nombre de texto 2:  "); 
+string txt2 = Console.ReadLine(); 
+
+char[] delimiterChars = { ' ', ',', '.', ':', '(' , ')'  };
+
+StreamReader sr1 = new StreamReader(txt1);
+StreaReader sr2 = new StreamReader(txt2); 
+if(! sr1.EndOfStream ) string lineaUno = sr1.ReadToEnd(); 
+List<string> listaUno = lineaUno.Split(delimiterChars); 
+listaUno.Sort(); 
+if (! sr2.EndOfStream) string lineaDos = sr2.ReadToEnd(txt2); 
+List<string> listaDos = listaDos.Split(delimiterChars); 
+listaDos.Sort(); 
+IEnumerable<string> both = listaUno.Interserc(listaDos); 
+foreach (string aux in both){
+  Console.Write(aux + " - "); 
+}
