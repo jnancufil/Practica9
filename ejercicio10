@@ -2,13 +2,19 @@
 using System.IO; 
 using System.Collections.Generic; 
 
+StreamReader sr = new StreamReader("algunTxt.txt");
+Textos listaT = new Textos(); 
+if (!sr.EndOfStream) listaT.AgregarTexto(0, sr.ReadToEnd()); 
 
 List<string> both = l1.Intersec(l2); 
 List<PalabraPosiciones> nuevaLista = both.ConverterAll (new Converter<string, PalabraPosiciones>(strToPalabrasPosciciones)); 
 
 public static PalabrasPosiciones strToPalabrasPosiciones(string elem){
   PalabraPosiciones aux = new PalabraPosiciones(elem);
-  aux.buscarYAgregarPosiciones(textUno, 0); 
+  for (int i= 0; i <= listaT.Count; i++){
+		 aux.buscarYAgregarPosiciones(listaT[i], i);
+		}
+  
   
   return aux; 
 }
