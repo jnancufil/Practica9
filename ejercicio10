@@ -37,7 +37,7 @@ class Textos{
 	public Textos(){}
 	public Textos(int nroTxt, string unTxt) => listaDeTextos[nroTxt].Add(unTxt); 
 	
-	public void AgregarTexto (int nroTxt, string unTxt) => listaDeTextos[nroTxt].Add(unTxt); 
+	public void AgregarTexto(int nroTxt, string unTxt) => listaDeTextos[nroTxt].Add(unTxt); 
 	
 }
 }
