@@ -10,7 +10,7 @@ if (dato != "") {
     System.IO.StreamReader sr = new System.IO.StreamReader(dato);
    string linea;
     //int contador = 0;
-    while (! sr.EndOfStream){
+    if (! sr.EndOfStream){
         linea = sr.ReadToEnd();
         string[] vectorSt = linea.Split(delimiterChars); // char delimitador = ' ';
         Array.Sort(vectorSt); //ordenamiento por default
