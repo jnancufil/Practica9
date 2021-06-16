@@ -1,18 +1,54 @@
-/**
+
+using System;
 using System.IO; 
 using System.Collections.Generic; 
 
-StreamReader sr = new StreamReader("algunTxt.txt");
+namespace ejercicio10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+          
 Textos listaT = new Textos(); 
-if (!sr.EndOfStream) listaT.AgregarTexto(0, sr.ReadToEnd());
-*************************************************************************************************
+cargaDeTextos(listaT);
+for (int i = 0; i <= listaT.Count; i++){
+	listaT.Item[i] =listaT.Item[i].Split(delimiterChars);  
+}
+List<string> both = listaT.Item[0].Intersec(listaT.Item[1]); 
+List<PalabraPosiciones> nuevaLista = both.ConverterAll(new Converter<string, PalabraPosiciones>(strToPalabrasPosiciones)); 
+
+foreach(PalabraPosiciones aux in nuevaLista){
+	Console.WriteLine(aux.ToString());
+}
+
+            Console.WriteLine("Hello World!");
+            Console.ReadLine();
+          PalabraPosiciones strToPalabrasPosiciones(string elem){
+            PalabraPosiciones aux = new PalabraPosiciones(elem);
+            for (int i= 0; i <= listaT.Count; i++){
+		            aux.buscarYAgregarPosiciones(listaT[i], i);
+		        }
+            return aux; 
+          } 
+
+
+
+        }
+                     
+        
+ 
+  
+ 
+
 static void cargaDeTextos(Textos t){
+   char[] delimiterChars = { ' ', ',', '.', ':', '(' , ')'  };
 	
 	Console.WriteLine("Inicio de carga de textos: ");
 	int i = 1; 
 	Console.WriteLine($"Ingrese nombre del texto {i}"); 
 	string nombreArchivo = Console.ReadLine(); 
-	while (nombre != "fin"){
+	while (nombreArchivo != "fin"){
 		StreamReader sr = new StreamReader(nombreArchivo);
 		if (! sr.EndOfStream) 
 			t.AgregarTexto(sr.ReadToEnd());
@@ -24,30 +60,18 @@ static void cargaDeTextos(Textos t){
 
 }
 
-List<string> both = l1.Intersec(l2); 
-List<PalabraPosiciones> nuevaLista = both.ConverterAll (new Converter<string, PalabraPosiciones>(strToPalabrasPosciciones)); 
-
-public static PalabrasPosiciones strToPalabrasPosiciones(string elem){
-  PalabraPosiciones aux = new PalabraPosiciones(elem);
-  for (int i= 0; i <= listaT.Count; i++){
-		 aux.buscarYAgregarPosiciones(listaT[i], i);
-		}
-  
-  
-  return aux; 
-}
-
+    }//programcs
 class PalabraPosiciones{
     public string Palabra {private set; get; }
     public List<List<int>> Posiciones {private set; get; }= new List<List<int>>(); 
     
     public PalabraPosiciones(){}
-    pulic PalabraPosiciones(string elem) => Palabra = elem; 
+    public PalabraPosiciones(string elem) => Palabra = elem; 
 
 public void buscarYAgregarPosiciones(string unText, int nroLista){
 	int end = unText.Length; 
 	int ini = 0; 
-	int at; 
+	int at=0; 
 	while ((ini <= end) && (at > -1)){
 		at = unText.IndexOf (Palabra, ini, end); 
 		if (at == -1) break;
@@ -63,16 +87,15 @@ public override string ToString(){
 	string aux = $"Palabra: \"{Palabra}\"  \n "; 
 	for (int i = 0; i <= Posiciones.Count; i++)
 		aux += 
-		"|--Posiciones en Texto{i+1}:-->{this.imprimirListaI(Posiciones[i])}\n"; 	
+		$"|--Posiciones en Texto{i+1}:-->{this.imprimirListaI(Posiciones[i])}\n"; 	
 	return aux; 
 	
 }
 	
 	
-}
-
-class Textos{
-	public List<string> listaDeTextos {private set; get} = new List<string>(); 
+}//classPosiciones
+  class Textos{
+	public List<string> listaDeTextos {private set; get;} = new List<string>(); 
 	
 	public Textos(){}
 	public Textos(string unTxt) => listaDeTextos.Add(unTxt); 
@@ -81,4 +104,5 @@ class Textos{
 	
 }
 
+}//namespace
 
