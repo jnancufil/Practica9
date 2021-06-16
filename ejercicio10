@@ -4,7 +4,25 @@ using System.Collections.Generic;
 
 StreamReader sr = new StreamReader("algunTxt.txt");
 Textos listaT = new Textos(); 
-if (!sr.EndOfStream) listaT.AgregarTexto(0, sr.ReadToEnd()); 
+if (!sr.EndOfStream) listaT.AgregarTexto(0, sr.ReadToEnd());
+*************************************************************************************************
+static void cargaDeTextos(Textos t){
+	
+	Console.WriteLine("Inicio de carga de textos: ");
+	int i = 1; 
+	Console.WriteLine($"Ingrese nombre del texto {i}"); 
+	string nombreArchivo = Console.ReadLine(); 
+	while (nombre != "fin"){
+		StreamReader sr = new StreamReader(nombreArchivo);
+		if (! sr.EndOfStream) 
+			t.AgregarTexto(sr.ReadToEnd());
+		i++;
+		Console.WriteLine($"Ingrese nombre del texto {i}"); 
+		nombreArchivo = Console.ReadLine(); 		
+	
+	}
+
+}
 
 List<string> both = l1.Intersec(l2); 
 List<PalabraPosiciones> nuevaLista = both.ConverterAll (new Converter<string, PalabraPosiciones>(strToPalabrasPosciciones)); 
