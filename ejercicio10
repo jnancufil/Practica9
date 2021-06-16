@@ -15,7 +15,7 @@ cargaDeTextos(listaT);
 for (int i = 0; i <= listaT.Count; i++){
 	listaT.Item[i] =listaT.Item[i].Split(delimiterChars);  
 }
-List<string> both = listaT.Item[0].Intersec(listaT.Item[1]); 
+List<string> both = listaT.Item[0].Union(listaT.Item[1]); 
 List<PalabraPosiciones> nuevaLista = both.ConverterAll(new Converter<string, PalabraPosiciones>(strToPalabrasPosiciones)); 
 
 foreach(PalabraPosiciones aux in nuevaLista){
