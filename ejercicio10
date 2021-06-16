@@ -65,4 +65,12 @@ class Textos{
 	
 }
 }
-StreamReader 
+public override string ToString(){
+	 
+	string aux = $"Palabra: \"{Palabra}\"  \n "; 
+	for (int i = 0; i <= Posiciones.Count; i++){
+		aux += 
+		|-- Posiciones en el Texto{i+1}:--> 	
+	}
+	""
+} 
