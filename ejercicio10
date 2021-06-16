@@ -41,9 +41,9 @@ class Textos{
 	public List<string> listaDeTextos {private set; get} = new List<string>(); 
 	
 	public Textos(){}
-	public Textos(int nroTxt, string unTxt) => listaDeTextos[nroTxt].Add(unTxt); 
+	public Textos(string unTxt) => listaDeTextos.Add(unTxt); 
 	
-	public void AgregarTexto(int nroTxt, string unTxt) => listaDeTextos[nroTxt].Add(unTxt); 
+	public void AgregarTexto( string unTxt) => listaDeTextos.Add(unTxt); 
 	
 }
 }
