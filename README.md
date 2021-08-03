@@ -1,1 +1,2 @@
 # Practica9
+TIPOS DE DATOS GENERICOS
